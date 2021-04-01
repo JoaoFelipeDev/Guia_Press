@@ -1,22 +1,92 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
   <head>
-    <title>Title</title>
+    <title>Artigos</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
       
-        <div class="card">
+    <head>
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+            <a class="navbar-brand" href="">
+                GuiaPress
+            </a>
+
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
+                <i class="fas fa-bars text-white"></i>
+              </button>
+
+            <div class="collapse navbar-collapse" id="nav-principal">
+
+                <ul class="navbar-nav mr-auto ">
+                    <li class="nav-item">
+
+                        <a href="/" class="nav-link">Home </a>
+
+                    </li>
+                    <li class="nav-item " style="width: 1px; background: rgb(40, 97, 204); margin: 12px 15px;">
+                        
+                    </li>
+                    
+                    <% categories.forEach( category => { %> 
+                    
+                            <li class="nav-item">
+
+                                <a href="/category/<%= category.slug %>" class="nav-link"><%= category.title %> </a>
+
+                            </li>
+                            
+
+                        <% }) %> 
+                  </ul>
+
+
+                </div>
+      
+
+        </nav>
+    </head>
+    
+
+    <section>
+        <div class="container">
 
             
-            
+                    <% articles.forEach(article=>{ %> 
+                       
+                      <div class="card mt-3">
+                          <div class="card-header">
+                            <h2><%= article.title %> </h2>
+                          </div>
+                          <div class="card-body">
+
+                            <a class="btn btn-success" href="/<%= article.slug %> ">Ler artigo</a>
+
+                          </div>
+                      </div>
+        
+                      <% }) %> 
+               
+
+                      <div class="row mt-3">
+
+                        <div class="col col-12">
+
+                          <a style="float: right;" href="/articles/page/2">Next >>></a>
+
+                        </div>
+
+                      </div>
         </div>
-    
+    </section>
+        
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

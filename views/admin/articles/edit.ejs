@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.tiny.cloud/1/q1sdksnrqw68rl2s2fqal55yy2494f9zj4ayx85ndrwxp0m3/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            lenguage: 'pt_BR',
+            selector: '#article',
+            plugins: [
+                'advlist autolink link image lists print preview hr searchreplace wardcount fullscreen insertdatetime media save table paste emoticons'
+            ]
+        });
+    </script>
+  </head>
+  <body>
+      
+    <head>
+      <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+          <a class="navbar-brand" href="">
+              GuiaPress
+          </a>
+
+          <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
+              <i class="fas fa-bars text-white"></i>
+            </button>
+
+          <div class="collapse navbar-collapse" id="nav-principal">
+              <ul class="navbar-nav ">
+                <li class="nav-item">
+                  <a href="/admin/categories" class="nav-link">Categorias</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/admin/articles" class="nav-link">Artigos</a>
+                </li>
+                
+              </ul>
+              </div>
+    
+
+      </nav>
+  </head>
+    <hr>
+    <h2>
+  
+    
+      <div class="container">
+            
+              
+                <h2>Edição Categorias</h2>
+              </div>
+              <div class="card-body">
+
+              <form action="/articles/update" method="post">
+                <input name="title" placeholder="Atualize o titulo do artigo: <%= article.title %>" value="<%= article.title %>" type="text" class="form-control mb-3">
+                
+                <textarea id="article" name="body" placeholder="Escreva seu artigo" type="text" class="form-control" > <%- article.body %> </textarea>
+                
+                <input type="hidden" name="id" value="<%= article.id %> " >
+
+                <select name="category" class="form-control">
+
+                  <% categories.forEach(category=>{ %>
+
+
+                    <% if(category.id == article.categoryId){ %>
+  
+                      <option value="<%= category.id %> " selected><%= category.title %> </option>
+  
+  
+                      <% }else{ %>
+                        <option value="<%= category.id %> " ><%= category.title %> </option>
+  
+                      <% } %> 
+  
+                 <% }) %> 
+
+                </select>
+
+                <button class="btn btn-success mt-2">Atualizar</button>
+              </form>
+
+            
+      </div>
+    
+        
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
