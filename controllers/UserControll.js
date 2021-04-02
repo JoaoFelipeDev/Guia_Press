@@ -20,7 +20,12 @@ router.get('/admin/users/create',(req,res)=>{
 
 router.get('/login',(req,res)=>{
     res.render('admin/users/login');
-})
+});
+
+router.get('/logout',(req,res)=>{
+    req.session.user = undefined;
+    res.redirect('/')
+});
 
 
 
@@ -88,7 +93,9 @@ router.post('/authenticate',(req,res)=>{
                 email: user.email
 
             }
-            res.json(req.session.user);
+
+            res.redirect('/admin/articles');
+           
 
         }else{
             res.redirect('/login');
